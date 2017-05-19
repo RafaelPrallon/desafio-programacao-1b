@@ -1,0 +1,32 @@
+<h1 align="center">Todas as vendas registradas</h1>
+<h3 align="left">
+  Para adicionar mais arquivos para alimentar o sistema, você pode usar o link na barra de navegação ou clicar <%= 
+                                                        link_to "aqui", new_upload_path %>.
+</h3>
+<% valorTotal = 0 %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Comprador</th>
+      <th>Descrição</th>
+      <th>Preço</th>
+      <th>Quantidade</th>
+      <th>Forneecedor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sells.each do |sell| %>
+    <tr>
+      <td><%= sell.buyer %></td>
+      <td><%= sell.description %></td>
+      <td><%= sell.price %></td>
+      <td><%= sell.qtd %></td>
+      <td><%= sell.provider %></td>      
+    </tr>
+    <% valorTotal += (sell.price.to_i) * (sell.qtd.to_i) %>
+    <% end %>
+  </tbody>
+</table> 
+<h3 align="center">
+  O valor total da receita bruta até o presente momento é R$ <%= valorTotal %>,00.
+</h2>
