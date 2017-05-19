@@ -1,0 +1,24 @@
+<%= link_to "Novo aquivo", new_upload_path, class: "btn btn-primary" %>
+<br />
+<br />
+
+<table class = "table table-bordered table-striped">
+   <thead>.
+      <tr>
+         <th>Nome</th>
+         <th>Link para Download</th>
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @uploads.each do |upload| %>
+         <tr>
+            <td><%= upload.name %></td>
+            <td><%= link_to "Download", upload.attachment_url %></td>
+            <td><%= button_to "Delete",  upload, method: :delete, class: "btn btn-danger",
+                    confirm: "Are you sure that you wish to delete #{upload.name}?" %></td>
+         </tr>
+      <% end %>
+   </tbody>
+   
+</table>
